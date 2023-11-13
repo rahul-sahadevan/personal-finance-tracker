@@ -38,7 +38,12 @@ function Header(){
             <p className="logo" >Financely.</p>
             {
                 user && (
-                    <p className="logo link" onClick={logoutFun}>Logout</p>
+                    <div className="photo-logout">
+                        <div>
+                            <img src={user.photoURL}></img>
+                        </div>
+                        <p className="logo link" onClick={logoutFun}>Logout</p>
+                    </div>
 
                 )
             }

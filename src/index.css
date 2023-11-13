@@ -16,3 +16,98 @@ input{
   font-family: 'Montserrat', sans-serif;
 } 
 
+.custom-input{
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 0.5rem 0rem;
+  width: 100%;
+  border-radius: 0;
+}
+.custom-input{
+  margin-top: -1rem !important;
+ 
+}
+
+.custom-input::placeholder{
+  color: rgba(0,0,0,0.5);
+}
+.custom-input:focus{
+  outline: none;
+  opacity: 1;
+  transition: all 0.3s;
+}
+.select{
+  padding: 2px;
+}
+.search-div{
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  align-items: center;
+}
+
+.input-flex,.select-type{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+  padding: 0rem 0.5rem;
+}
+
+.input-flex{
+  width: 100%;
+  padding: 0.5rem;
+  border: 0;
+}
+.input-flex input{
+  outline: none;
+  border: none;
+}
+.select-type{
+  width: 30%;
+  outline: none;
+  padding: 0.25rem 0.5rem;
+
+}
+.select-type>div{
+  border: 0px solid white !important;
+}
+.select-type:focus{
+  outline: none;
+}
+.major-div{
+  padding: 0rem 2rem;
+}
+.table-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0rem 2rem;
+  width:100%;
+  box-shadow: var(--shadow);
+  border-radius: 0.5rem;
+}
+.radio-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.table{
+  width: 100%;
+}
+.btn-div{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+}
+.x{
+  white-space: pre;
+
+}

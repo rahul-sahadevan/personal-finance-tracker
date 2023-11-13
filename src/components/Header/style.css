@@ -8,6 +8,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    z-index: 1000;
 }
 .logo{
     color: var(--white);
@@ -22,4 +23,18 @@
 .link:hover{
     opacity: 1;
     transition: 0.3s ease;
+}
+.photo-logout{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    /* padding: 0.5rem; */
+}
+.photo-logout img{
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+}
+.photo-logout p{
+    margin-top: 3px;
 }
