@@ -11,6 +11,8 @@ import { addDoc,collection,query,where,getDocs } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import moment from "moment/moment";
 import TransactionTable from "../components/TransactionTable";
+import Chart from "../components/Charts";
+import NoTransaction from "../components/NoTransactions";
 
 function Dashboard(){
     const [user] = useAuthState(auth)
@@ -49,7 +51,7 @@ function Dashboard(){
         addTransaction(newTransaction)
     }
 
-    async function addTransaction(trans){
+    async function addTransaction(trans,many){
         try{
              
             const docRef = await addDoc(
@@ -60,11 +62,11 @@ function Dashboard(){
             newarr.push(trans)
             setTransaction(newarr)
 
-            toast.success('Transaction Added')
+            if(!many) toast.success('Transaction Added')
         }
         catch(e){
             console.log(e)
-            toast.error('Could not add transaction!')
+            if(!many) toast.error('Could not add transaction!')
             
         }
     }
@@ -113,6 +115,12 @@ function Dashboard(){
 
     }
 
+    let sortedTransaction = transaction.sort((a,b)=>{
+        
+        return new Date(a.date) - new Date(b.date)
+        
+    })
+
 
     return (
         <div>
@@ -122,26 +130,27 @@ function Dashboard(){
                 (
                     <>
 
-                    <Cards 
-                        income={income}
-                        expence={expence}
-                        totalBalance={totalBalance}
-                        showIncomeModal={showIncomeModal}
-                        showExpenseModal={showExpenseModal} 
-                    />
-                    
-                    <AddIncome
-                        isIncomeModalVisible={isIncomeModalVisible}
-                        handleIncomeCancel={handleIncomeCancel}
-                        onFinish={onFinish}
-                    />
-        
-                    <AddExpence
-                        isExpenseModalVisible={isExpenseModalVisible}
-                        handleExpenseCancel={handleExpenseCancel}
-                        onFinish={onFinish}
-                    />
-                    <TransactionTable transaction={transaction}/>
+                        <Cards 
+                            income={income}
+                            expence={expence}
+                            totalBalance={totalBalance}
+                            showIncomeModal={showIncomeModal}
+                            showExpenseModal={showExpenseModal} 
+                        />
+                        {transaction && transaction.length !==0 ? <Chart sortedTransaction={sortedTransaction}/> : <NoTransaction/>}
+                        
+                        <AddIncome
+                            isIncomeModalVisible={isIncomeModalVisible}
+                            handleIncomeCancel={handleIncomeCancel}
+                            onFinish={onFinish}
+                        />
+            
+                        <AddExpence
+                            isExpenseModalVisible={isExpenseModalVisible}
+                            handleExpenseCancel={handleExpenseCancel}
+                            onFinish={onFinish}
+                        />
+                        <TransactionTable transaction={transaction} addTransaction={addTransaction} fetchTransaction={fetchTransaction}/>
                 </>
                 )
             }

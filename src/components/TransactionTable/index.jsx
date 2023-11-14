@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Radio, Select, Table } from "antd";
+import { parse, unparse } from "papaparse";
+import { toast } from "react-toastify";
 
-function TransactionTable({transaction}){
+function TransactionTable({transaction,addTransaction,fetchTransaction}){
     const {Option} = Select
     let [search,setSearch] = useState('');
     let[typeFilter,setTypeFilter] = useState('')
@@ -51,6 +53,52 @@ function TransactionTable({transaction}){
         }
       })
 
+      // function to export the csv file---------------------------------
+
+      function exportToCsv(){
+        var csv = unparse({
+          fields:['name','type','tag','date','amount'],
+          data: transaction
+        })
+
+        var data = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+        var csvURL = window.URL.createObjectURL(data);
+        const tempLink = document.createElement('a');
+        tempLink.href = csvURL;
+        tempLink.setAttribute('download', 'Transaction.csv');
+        document.body.append(tempLink)
+        tempLink.click();
+        document.body.removeChild(tempLink)
+       
+      }
+
+    // function to import csv file from the folder---------------
+
+    function importFromCSV(event){
+
+      event.preventDefault();
+      try{
+        parse(event.target.files[0],{
+          header:true,
+          complete: async function (result){
+            console.log('result',result.data)
+            
+            for(const data of result.data){
+              const newData = {...data,amount:parseFloat(data.amount)}
+              await addTransaction(newData,true)
+            }
+          }
+        })
+        toast.success('All Transaction Added!')
+        fetchTransaction()
+        event.target.files - null
+      }
+      catch(e){
+        toast.error(e)
+      }
+
+    }
+
 
       return (
         <div className="major-div">
@@ -90,11 +138,11 @@ function TransactionTable({transaction}){
                 </Radio.Group>
 
                 <div className="btn-div">
-                    <button className="btn">Export to CSV</button>
+                    <button className="btn" onClick={exportToCsv}>Export to CSV</button>
                     <label for="file-csv" className="btn btn-blue x">
                         Import from CSV
+                      <input id="file-csv" type="file" accept=".csv" onChange={importFromCSV} required style={{display:'none'}}></input>
                     </label>
-                    <input id="file-csv" type="file" accept=".csv" required style={{display:'none'}}></input>
                 </div>
                 
             </div>
