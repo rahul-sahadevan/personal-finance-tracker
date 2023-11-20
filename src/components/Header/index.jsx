@@ -21,7 +21,7 @@ function Header(){
         try{
             signOut(auth).then(() => {
                 // Sign-out successful.
-                navigate("/")
+                navigate("/signin")
                 toast.success("Loged out succesfully!")
               }).catch((error) => {
                 // An error happened.
@@ -33,20 +33,36 @@ function Header(){
             toast.error(e.message)
         }
     }
+    // function to navigate to login or sign up page
+    function handleHome(){
+        navigate("/")
+    }
+   
+    // 
     return (
         <div className="nav-bar">
-            <p className="logo" >Financely.</p>
+            <p className="logo" ><img className="logo-image" src='src\assets\fi-high-resolution-logo.png'></img>nancely.</p>
             {
-                user && (
+                user ?(
                     <div className="photo-logout">
                         <div>
                             <img src={user.photoURL}></img>
                         </div>
                         <p className="logo link" onClick={logoutFun}>Logout</p>
                     </div>
+    
+                ):
+                (
+                    <div className="photo-logout">
+                        <p className="logo link" onClick={handleHome}>Home</p>
+                    </div>
 
                 )
+
             }
+           
+            
+           
         </div>
     )
 }
