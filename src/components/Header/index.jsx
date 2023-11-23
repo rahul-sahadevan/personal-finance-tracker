@@ -1,11 +1,9 @@
 import React,{useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import './style.css'
+
 import { auth } from "../../firebase";
-import {  signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { toast } from "react-toastify";
-import { Switch } from "antd";
 import ThemeContext from "../../ThemeContext/ThemeContext";
 
 function Header(){
@@ -20,22 +18,8 @@ function Header(){
 
     },[user,loading])
     // logout funtion-------------------
-    function logoutFun(){
-        try{
-            signOut(auth).then(() => {
-                // Sign-out successful.
-                navigate("/signin")
-                toast.success("Loged out succesfully!")
-              }).catch((error) => {
-                // An error happened.
-              });
-              
-
-        }
-        catch(e){
-            toast.error(e.message)
-        }
-    }
+    console.log(user)
+    
     // function to navigate to login or sign up page
     function handleHome(){
         navigate("/")
@@ -49,12 +33,7 @@ function Header(){
             {
                 user ?(
                     <div className="photo-logout">
-                        
-                        <div>
-                            <img src={user.photoURL}></img>
-                        </div>
-
-                        <p className="logo link" onClick={logoutFun}>Logout</p>
+                        <p  style={{color:'white',fontWeight:"600"}}>Welcome {user.displayName.split(" ")[0]} !</p>
                     </div>
     
                 ):
@@ -66,9 +45,6 @@ function Header(){
                 )
 
             }
-           
-            
-           
         </div>
     )
 }

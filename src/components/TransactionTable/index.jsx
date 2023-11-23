@@ -124,7 +124,7 @@ function TransactionTable({transaction,addTransaction,fetchTransaction}){
         <br></br>
         <div className="table-div">
             <div className="radio-div">
-                <h2>My Transactions</h2>
+                <h2 className="my-trans">My Transactions</h2>
 
                 <Radio.Group
                     className="input-radio"

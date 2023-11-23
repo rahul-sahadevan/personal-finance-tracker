@@ -1,12 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import {Grid,BarChart2, CreditCard, DollarSign, Moon} from 'react-feather'
+import React, { useEffect, useState} from 'react'
+import { useNavigate } from 'react-router-dom';
+import {Grid,BarChart2, CreditCard, DollarSign, Moon, LogOut} from 'react-feather'
 import './style.css'
+
+import { auth } from "../../firebase";
+import {  signOut } from "firebase/auth";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { toast } from "react-toastify";
+
 import ThemeContext from '../../ThemeContext/ThemeContext';
 import { useContext } from 'react';
+
 
 function SideBar(){
     const [toggle,setToggle] = useState(false);
     const {them,changeTheme} = useContext(ThemeContext)
+    const [active,setActice] = useState(false);
+
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(user){
+            navigate("/dashboard")
+        }
+
+    },[user,loading])
+
+    // function for logoun-----------------
+
+    function logoutFun(){
+        try{
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                navigate("/signin")
+                toast.success("Loged out succesfully!")
+              }).catch((error) => {
+                // An error happened.
+              });
+              
+
+        }
+        catch(e){
+            toast.error(e.message)
+        }
+    }
+
+    // function to navigate to home ----------------
+    function handleHome(){
+        navigate("/")
+    }
 
 
     const handleTogleChange = ()=>{
@@ -19,6 +62,7 @@ function SideBar(){
     }
 
     function handleToggle(){
+        setActice(true)
         if(toggle === true){
             setToggle(false);
         }
@@ -26,7 +70,8 @@ function SideBar(){
             setToggle(true)
         }
     }
-    
+
+ 
 
     useEffect(()=>{
         console.log("xxx")
@@ -36,26 +81,49 @@ function SideBar(){
 
     return (
         <div className='side-bar'>
+
             <div className='side-btn'>
-                <Grid />
+                <Grid/>
                 <div className='hover-div'></div>
             </div>
             <div className='side-btn'>
-                <BarChart2 />
+                <BarChart2/>
                 <div className='hover-div'></div>
             </div>
             <div className='side-btn'>
                 <CreditCard />
-                <div className='hover-div'></div>
+                <div className='hover-div active'></div>
             </div>
             <div className='side-btn'>
-                <DollarSign />
+                <DollarSign/>
                 <div className='hover-div'></div>
             </div>
             <div className='side-btn moon-btn'>
                 <Moon  onClick={handleToggle}/>
                 <div className='hover-div'></div>
             </div>
+            {
+                user ?(
+                <div className="photo-logout">
+                        <div className='side-btn'>
+                            < LogOut onClick={logoutFun} />
+                            <div className='hover-div'></div>
+                        </div>
+                        <div>
+                            <img src={user.photoURL}></img>
+                        </div>
+                    </div>
+    
+                ):
+                (
+                    <div className="photo-logout">
+                        <p className="logo link" onClick={handleHome}>Home</p>
+                    </div>
+
+                )
+
+            }
+           
            
         </div>
     )
