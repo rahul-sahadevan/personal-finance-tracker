@@ -29,7 +29,7 @@ const Chart = ({sortedTransaction}) => {
 
   const config = {
     data:data,
-    width: 800,
+    width: 700,
     height: 400,
     autoFit: false,
     xField: 'date',
@@ -62,12 +62,12 @@ const Chart = ({sortedTransaction}) => {
 
   return (
     <div className='chart-wrapper'>
-      <div className='chart'>
+      <div className='chart left-chart'>
         <h2>Financial Statistics</h2>
         <br></br>
-        <Line {...config} onReady={(chartInstance) => (chart = chartInstance)} />
+        <Line  {...config} onReady={(chartInstance) => (chart = chartInstance)} />
       </div>
-      <div className='chart'>
+      <div className='chart right-chart'>
         <h2>Total Spending</h2>
         <br></br>
         <Pie {...spendingconfig} onReady={(chartInstance) => (pieChart = chartInstance)} />

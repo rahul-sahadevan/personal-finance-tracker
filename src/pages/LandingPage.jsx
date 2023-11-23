@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import { Link, useNavigate } from 'react-router-dom'
 import {ArrowDownRight, ExternalLink, Facebook, GitHub, Info, Instagram, Linkedin, Twitter} from 'react-feather'
@@ -7,9 +7,25 @@ import { Row,Card } from 'antd';
 
 const LandingPage = ()=>{
     const navigate = useNavigate();
+    const [rotation,setRotation] = useState({x:0,y:0})
 
     function handleLogin(){
         navigate("/signin")
+    }
+    const handleImageRotation = (e)=>{
+        const container = e.currentTarget;
+        const { clientX, clientY } = e;
+
+        const rotationX = ((clientY / container.offsetHeight - 0.5) * 60).toFixed(2);
+        const rotationY = ((clientX / container.offsetWidth - 0.5) * 60).toFixed(2);
+
+        setRotation({ x: rotationX, y: rotationY });
+    }
+
+    const handleMouseLeave = (e)=>{
+        const container = e.currentTarget;
+
+        setRotation({x:0,y:0})
     }
 
     return (
@@ -40,7 +56,7 @@ const LandingPage = ()=>{
                     <br></br>
                   
 
-                    <div className='major-image'>
+                    <div className='major-image' onMouseMove={handleImageRotation} onMouseLeave={handleMouseLeave} style={{transform:`rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`}}>
                         <div className='first-image'>
                             <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bc141a89b7006a587f0ac8_App%20Image.jpg" alt="" class="app-photo"></img>
 
@@ -49,7 +65,11 @@ const LandingPage = ()=>{
                             <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bc14226dae299806bc7977_Earnings%20Image.jpg" loading="lazy" sizes="(max-width: 479px) 100px, (max-width: 991px) 150px, 250px"  alt="" className="_100width"></img>
 
                         </div>
+                        <div className='third-image'>
+                            <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bc141adc1635dfab4166e7_Visitor%20Insights.jpg" loading="lazy" sizes="(max-width: 767px) 180px, (max-width: 991px) 280px, 506px"  alt="" class="_100width"></img>
+                        </div>
                     </div>
+                    <br></br>
                     <br></br>
                     <div className='product-div'>
                         <div className='product-div-1'>
@@ -176,23 +196,21 @@ const LandingPage = ()=>{
                             <div className='split-1'>
                                 <div>
                                     <p className='text-content-2'>Handcrafted  to Manage all your data</p>
-                                    <p className='text-content'>Enjoy the convenience of our finance management web app on any device – from desktops to mobile phones. Our responsive design and touch-friendly features provide a consistent and user-friendly experience.</p>
+                                    <p className='text-content'>Get the data directly on your phone, scroll and swipe away to get informed and updated.</p>
                                 </div>
-                                <br></br>
-                                <p className='text-content'>Device compatibility </p>
                                 <br></br>
                                 <ul className='ul-list'>
                                     <li>
                                         <Info/>
-                                        <p className='text-content'>You can access financely in laptops.</p>
+                                        <p className='text-content'>Easy to use and understand</p>
                                     </li>
                                     <li>
                                         <Info/>
-                                        <p className='text-content'>You can access financely in desktops.</p>
+                                        <p className='text-content'>Accessible from anywhere</p>
                                     </li>
                                     <li>
                                         <Info/>
-                                        <p className='text-content'>You can access financely in Smartphones.</p>
+                                        <p className='text-content'>Auto sync between devices with the latest data</p>
                                     </li>
                                 </ul>
                             </div>        

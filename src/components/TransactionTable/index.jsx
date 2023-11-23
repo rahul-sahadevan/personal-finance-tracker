@@ -108,18 +108,18 @@ function TransactionTable({transaction,addTransaction,fetchTransaction}){
                 <input type="text" placeholder="Search By Name" value={search} onChange={(e)=>setSearch(e.target.value)}></input>
 
             </div>
-                <Select 
-                className="select-type"
-                onChange={(value)=> setTypeFilter(value)}
-                value={typeFilter}
-                placeholder='Filter'
-                allowClear
-                >
-                    <Option value=''>All</Option>
-                    <Option value='income'>Income</Option>
-                    <Option value='expense'>Expense</Option>
+            <Select 
+            className="select-type"
+            onChange={(value)=> setTypeFilter(value)}
+            value={typeFilter}
+            placeholder='Filter'
+            allowClear
+            >
+                <Option className='option' value=''>All</Option>
+                <Option value='income'>Income</Option>
+                <Option value='expense'>Expense</Option>
 
-                </Select>
+            </Select>
         </div>
         <br></br>
         <div className="table-div">
@@ -131,9 +131,9 @@ function TransactionTable({transaction,addTransaction,fetchTransaction}){
                     onChange={(e)=>setSortKey(e.target.value)}
                     value={sortKey}
                 >
-                    <Radio.Button value=''>No Sort</Radio.Button>
-                    <Radio.Button value='date'>Sort By Date</Radio.Button>
-                    <Radio.Button value='amount'>Sort By Amount</Radio.Button>
+                    <Radio.Button className="radio-btn" value=''>No Sort</Radio.Button>
+                    <Radio.Button className="radio-btn" value='date'>Sort By Date</Radio.Button>
+                    <Radio.Button className="radio-btn" value='amount'>Sort By Amount</Radio.Button>
 
                 </Radio.Group>
 

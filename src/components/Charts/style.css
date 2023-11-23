@@ -5,11 +5,22 @@
     gap: 20px;
     align-items: center;
     padding: 2rem;
-   
+    flex-wrap: wrap;
+    
 }
 .chart{
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
     padding: 2rem;
+    background-color: var(--card-background);
    
+}
+.left-chart{
+    width: 65%;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+.right-chart{
+    width: 30%;
 }

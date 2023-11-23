@@ -1,0 +1,26 @@
+.side-bar{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:30px;
+    padding: 30px;
+    position: sticky;
+    top: 100px;
+    left: 0;
+   
+
+}
+.side-btn{
+    cursor: pointer;
+}
+.hover-div{
+    width: 0px;
+    transition: all 1s ease;
+}
+
+.side-btn:hover .hover-div{
+    width: 100%;
+    height: 2px ;
+    background-color: #ff004f;
+
+}

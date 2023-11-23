@@ -1,10 +1,13 @@
 .my-card{
     box-shadow: var(--shadow);
-    min-width: 400px;
+    min-width: 350px;
     font-family: 'Montserrat', sans-serif;
-    flex: 1;
+    /* flex: 1; */
     margin: 1.5rem;
     border-radius: 0.5rem;
+    background-color: var(--card-background);
+    border: none;
+    color: var(--text-color);
 }
 .my-row{
     display: flex;
@@ -12,9 +15,15 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-   
+
+  
 }
 .ant-card-head-title{
     margin: 0rem !important;
     font-weight: 600;
+}
+.current-card{
+    background:linear-gradient(to right,#3370eb, #5e90e6);
+   color:white;
+   width: 400px;
 }

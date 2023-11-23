@@ -1,23 +1,55 @@
  @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Mulish&display=swap');
+ 
 :root{
   --theme:#2978ff;
   --black:#000;
   --white:#fff;
   --shadow:0px 0px 30px 8px rgba(227,227,227,0.75);
   --linear:linear-gradient(90deg, #dec880, #fff 27%, #ff3980 57%, #827ded);
+    
+  --background-color:white;
+  --text-color:black;
+  --card-background:white;
+  --border:0;
 
 
 }
+body[data-theme = 'dark']{
+  --background-color:black;
+  --text-color:white;
+  --shadow:#17171A;
+  --card-background:#17171A;
+  --border:1px soolid grey;
+}
 body{
   margin: 0;
-  
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-family: 'Montserrat', sans-serif;
   
 }
 input{
   font-family: 'Montserrat', sans-serif;
 } 
+.nav-side{
+  display:flex;
+  width: 100%;
+ 
+  
+}
+.side-bar2{
+  width: 5%;
+  position: relative;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+}
+.main-bar{
+  width: 95%;
+ 
+}
 .custom-input{
   border: none;
   border-bottom: 1px solid #000;
@@ -62,17 +94,21 @@ input{
 .input-flex{
   width: 100%;
   padding: 0.5rem;
-  border: 0;
+  border:var(--border) ;
+  box-shadow: var(--shadow);
+  background-color: white;
 }
 .input-flex input{
   outline: none;
   border: none;
+  /* background-color: var(--card-background);
+  color: var(--text-color); */
 }
 .select-type{
   width: 30%;
   outline: none;
   padding: 0.25rem 0.5rem;
-
+  /* background-color: var(--card-background); */
 }
 .select-type>div{
   border: 0px solid white !important;
@@ -80,6 +116,7 @@ input{
 .select-type:focus{
   outline: none;
 }
+
 .major-div{
   padding: 0rem 2rem;
 }
@@ -92,6 +129,8 @@ input{
   box-shadow: var(--shadow);
   border-radius: 0.5rem;
   margin-bottom: 50px;
+  background-color: white;
+  /* background-color: var(--card-background); */
 }
 .radio-div{
   display: flex;
@@ -100,9 +139,17 @@ input{
   width: 100%;
   padding: 2rem;
 }
+/* .input-radio .radio-btn{
+  background-color: var(--card-background);
+  color: var(--text-color);
+  
+} */
 
 .table{
   width: 100%;
+  background-color: white;
+  border-radius: 10px;
+ 
 }
 .btn-div{
   display: flex;
@@ -186,8 +233,13 @@ input{
   justify-content: center;
   align-items: center; */
   position: relative;
+  /* transition: transform 0.3s ease-in-out; */
+  transform-style: preserve-3d;
+  
 
 }
+
+
 .major-image img{
   width: 70%;
   border-radius: 10px;
@@ -203,6 +255,14 @@ input{
   left: 0; 
   z-index: 2;
   margin-left: 60px;
+}
+.third-image{
+  width: 800px;
+  position: absolute;
+  height: 300px;
+  bottom: 0; 
+  right: 0; 
+  z-index: 2;
 }
 ._100width{
   width: 100%;

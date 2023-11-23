@@ -13,6 +13,7 @@ import moment from "moment/moment";
 import TransactionTable from "../components/TransactionTable";
 import Chart from "../components/Charts";
 import NoTransaction from "../components/NoTransactions";
+import SideBar from '../components/SideBar'
 
 function Dashboard(){
     const [user] = useAuthState(auth)
@@ -110,7 +111,7 @@ function Dashboard(){
             }
             setIncome(incomeTotal)
             setExpence(expenceTotal);
-            setTotalBalance(income - expence)
+            setTotalBalance(incomeTotal - expenceTotal)
         })
 
     }
@@ -124,34 +125,42 @@ function Dashboard(){
 
     return (
         <div>
-            <Header/>
+            
+                <Header/>
             {
                 loading ? (<p>Loding...</p>):
                 (
-                    <>
+                    <div className="nav-side">
+                        <div className="side-bar2">
+                            <SideBar/>
 
-                        <Cards 
-                            income={income}
-                            expence={expence}
-                            totalBalance={totalBalance}
-                            showIncomeModal={showIncomeModal}
-                            showExpenseModal={showExpenseModal} 
-                        />
-                        {transaction && transaction.length !==0 ? <Chart sortedTransaction={sortedTransaction}/> : <NoTransaction/>}
-                        
-                        <AddIncome
-                            isIncomeModalVisible={isIncomeModalVisible}
-                            handleIncomeCancel={handleIncomeCancel}
-                            onFinish={onFinish}
-                        />
-            
-                        <AddExpence
-                            isExpenseModalVisible={isExpenseModalVisible}
-                            handleExpenseCancel={handleExpenseCancel}
-                            onFinish={onFinish}
-                        />
-                        <TransactionTable transaction={transaction} addTransaction={addTransaction} fetchTransaction={fetchTransaction}/>
-                </>
+                        </div>
+                        <div className="main-bar">
+                            <Cards 
+                                income={income}
+                                expence={expence}
+                                totalBalance={totalBalance}
+                                showIncomeModal={showIncomeModal}
+                                showExpenseModal={showExpenseModal} 
+                            />
+                            {transaction && transaction.length !==0 ? <Chart sortedTransaction={sortedTransaction}/> : <NoTransaction/>}
+                            
+                            <AddIncome
+                                isIncomeModalVisible={isIncomeModalVisible}
+                                handleIncomeCancel={handleIncomeCancel}
+                                onFinish={onFinish}
+                            />
+                
+                            <AddExpence
+                                isExpenseModalVisible={isExpenseModalVisible}
+                                handleExpenseCancel={handleExpenseCancel}
+                                onFinish={onFinish}
+                            />
+                            <TransactionTable transaction={transaction} addTransaction={addTransaction} fetchTransaction={fetchTransaction}/>
+
+                        </div>
+
+                </div>
                 )
             }
         </div>
