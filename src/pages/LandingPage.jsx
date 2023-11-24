@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Header from '../components/Header'
 import { Link, useNavigate } from 'react-router-dom'
 import {ArrowDownRight, ExternalLink, Facebook, GitHub, Info, Instagram, Linkedin, Twitter} from 'react-feather'
-import { Row,Card } from 'antd';
+import { Row,Card ,Carousel} from 'antd';
 
 
 const LandingPage = ()=>{
@@ -216,7 +216,20 @@ const LandingPage = ()=>{
                             </div>        
 
                             <div className='split-2 overlap-image-div'>
-                                <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bebe4e601a60ce1d2bb940_Slider%20Image%2002.jpg" loading="lazy" alt="" className="feature-image"></img>
+                                <Carousel className='carousel-div' autoplay>
+                                    <div>
+
+                                        <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bebe4e7179fecc6348f131_Slider%20Image%2001.jpg" loading="lazy" alt="" class="feature-image"></img>
+                                    </div>
+                                    <div>
+
+                                        <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bebe4e601a60ce1d2bb940_Slider%20Image%2002.jpg" loading="lazy" alt="" className="feature-image"></img>
+                                    </div>
+                                    <div>
+
+                                        <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bebe4f8f3058338a17893b_Slider%20Image%2003.jpg" loading="lazy" alt="" class="feature-image"></img>
+                                    </div>
+                                </Carousel>
                             </div>                
                         </div>
                     {/* ------------ */}
