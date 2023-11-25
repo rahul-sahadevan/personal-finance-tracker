@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Radio, Select, Table } from "antd";
 import { parse, unparse } from "papaparse";
 import { toast } from "react-toastify";
+import './style.css'
 
 function TransactionTable({transaction,addTransaction,fetchTransaction}){
     const {Option} = Select
@@ -136,6 +137,18 @@ function TransactionTable({transaction,addTransaction,fetchTransaction}){
                     <Radio.Button className="radio-btn" value='amount'>Sort By Amount</Radio.Button>
 
                 </Radio.Group>
+
+                <Select 
+                  className='select-type select-2'
+                  value={sortKey}
+                  onChange={(value)=>setSortKey(value)}
+                  placeholder='Sort'
+                >
+                  <Option value=''>No Sort</Option>
+                  <Option value='date'>Sort By Date</Option>
+                  <Option value='amount'>Sort By Amount</Option>
+
+                </Select>
 
                 <div className="btn-div">
                     <button className="btn" onClick={exportToCsv}>Export to CSV</button>

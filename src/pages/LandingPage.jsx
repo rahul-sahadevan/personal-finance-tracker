@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import { Link, useNavigate } from 'react-router-dom'
 import {ArrowDownRight, ExternalLink, Facebook, GitHub, Info, Instagram, Linkedin, Twitter} from 'react-feather'
 import { Row,Card ,Carousel} from 'antd';
-
+import './style.css'
 
 const LandingPage = ()=>{
     const navigate = useNavigate();
@@ -111,7 +111,7 @@ const LandingPage = ()=>{
                     </div>
 
                     <br></br>
-                    <div style={{padding:'80px'}}>
+                    <div className='wecan-help' >
                         <p className='text-content-2'>We can help you manage from top to bottom, all <br></br>the layers.</p>
                         <br></br>
                         <br></br>
@@ -183,7 +183,7 @@ const LandingPage = ()=>{
                     {/* --------------------------------- */}
 
                     <div className='grey-div'>
-                        <div>
+                        <div className='all-in-one'>
                             <p className='text-content-2'>All in one platform, from mobile to desktop everything you need is here</p>
                             <br></br>
                             <p className='text-content'>Our finance tracking web app is designed with full device compatibility, ensuring a seamless and responsive experience across desktops, laptops, tablets, and smartphones.</p>
@@ -314,14 +314,10 @@ const LandingPage = ()=>{
                             <h1 className='text-content-2'>Get to Know us</h1>
                             <br></br>
                             <p className='input-tag'>
-                                <input type='email' placeholder='Enter Email' className='input-field' required></input>
-                                <button className='buy-btn2' type='submit'>Submit</button>
+                                <input type='email' placeholder='Enter Email' className='input-field email-input' required></input>
+                                <button className='buy-btn2 sub-btn' type='submit'>Submit</button>
                             </p>
-                            <div className='layer'>
-                                <p className='text-content'>Enter Your Email</p>
-                               
-                                <ExternalLink/>
-                            </div>
+                            
                         </Card>
                         <Card className='hcgs-card'>
                             <h1 className='text-content-2'>Security</h1>

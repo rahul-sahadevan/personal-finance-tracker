@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import {Grid,BarChart2, CreditCard, DollarSign, Moon, LogOut} from 'react-feather'
+import {Menu,Grid,BarChart2, CreditCard, DollarSign, Moon, LogOut} from 'react-feather'
 import './style.css'
 
 import { auth } from "../../firebase";
@@ -15,7 +15,7 @@ import { useContext } from 'react';
 function SideBar(){
     const [toggle,setToggle] = useState(false);
     const {them,changeTheme} = useContext(ThemeContext)
-    const [active,setActice] = useState(false);
+    const [active,setActice] = useState('active');
 
     const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
@@ -71,6 +71,16 @@ function SideBar(){
         }
     }
 
+    function handleMenu(){
+        if(active === 'active'){
+            setActice('hide-active')
+        }
+        else{
+            setActice('active')
+        }
+
+    }
+
  
 
     useEffect(()=>{
@@ -81,7 +91,6 @@ function SideBar(){
 
     return (
         <div className='side-bar'>
-
             <div className='side-btn'>
                 <Grid/>
                 <div className='hover-div'></div>
@@ -105,7 +114,7 @@ function SideBar(){
             {
                 user ?(
                 <div className="photo-logout">
-                        <div className='side-btn'>
+                        <div className='side-btn logout-div'>
                             < LogOut onClick={logoutFun} />
                             <div className='hover-div'></div>
                         </div>

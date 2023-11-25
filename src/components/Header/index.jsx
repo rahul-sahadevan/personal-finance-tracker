@@ -33,7 +33,7 @@ function Header(){
             {
                 user ?(
                     <div className="photo-logout">
-                        <p  style={{color:'white',fontWeight:"600"}}>Welcome {user.displayName} !</p>
+                        <p  className="welcome-tag">Welcome {user.displayName} !</p>
                     </div>
     
                 ):

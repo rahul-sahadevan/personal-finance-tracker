@@ -6,7 +6,7 @@ function Cards({showIncomeModal,showExpenseModal,income,expence,totalBalance}){
 console.log(totalBalance)
     return (
         <div className='my-row'>
-            <Row>
+            <Row className='row'>
                 <Card className='my-card current-card'>
                     <h2>Balance</h2>
                     <p>₹{totalBalance}</p>
