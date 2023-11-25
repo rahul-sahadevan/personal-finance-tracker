@@ -3,8 +3,10 @@ import './style.css'
 import Input from "../input";
 import Button from "../Button";
 import { toast } from "react-toastify";
+
 import {createUserWithEmailAndPassword ,signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
 import { auth ,db} from "../../firebase";
+
 import { useNavigate } from "react-router-dom";
 import {doc,getDoc,setDoc} from 'firebase/firestore'
 import { provider } from "../../firebase";
@@ -190,10 +192,21 @@ function SignupSignin(){
                        
 
                     </form>
-                    <Button dissabled={loading} text={loading ? 'Loading...':'Signup Using Email or Password'} onClick={loginwithEmail}/>
+                    <Button dissabled={loading} 
+                        text={loading ? 'Loading...':'Signup Using Email or Password'} 
+                        onClick={loginwithEmail}
+                    />
+
                     <p className="p-login">or</p>
-                    <Button onClick={signinUsingGoogle} dissabled={loading} text={loading ? 'Loading...' : 'Signup Using Google'} blue={true}/>
-                    <p className="p-login">or Dont have an account Already? <span className="click-here" onClick={()=>setLoginForm(false)}>Click here</span></p>
+                    
+                    <Button onClick={signinUsingGoogle}
+                        dissabled={loading} text={loading ? 'Loading...' : 'Signup Using Google'} 
+                        blue={true}
+                     />
+                    <p className="p-login">
+                        or Dont have an account Already? 
+                        <span className="click-here" onClick={()=>setLoginForm(false)}>Click here</span>
+                    </p>
                 </div>
 
             )
@@ -234,10 +247,21 @@ function SignupSignin(){
                         />
 
                     </form>
-                    <Button dissabled={loading} text={loading ? 'Loading...':'Login Using Email or Password'} onClick={signUpwithEmail}/>
+                    <Button dissabled={loading}
+                        text={loading ? 'Loading...':'Login Using Email or Password'} 
+                        onClick={signUpwithEmail}
+                    />
+
                     <p className="p-login">or</p>
-                    <Button onClick={signinUsingGoogle} dissabled={loading} text={loading ? 'Loading...' : 'Login Using Google'} blue={true}/>
-                    <p className="p-login">or have an account Already? <span className="click-here" onClick={()=> setLoginForm(true)}>Click here</span></p>
+                    <Button onClick={signinUsingGoogle} 
+                        dissabled={loading} 
+                        text={loading ? 'Loading...' : 'Login Using Google'} 
+                        blue={true}
+                    />
+                    <p className="p-login">
+                        or have an account Already? 
+                        <span className="click-here" onClick={()=> setLoginForm(true)}>Click here</span>
+                    </p>
                 </div>
             )
         }

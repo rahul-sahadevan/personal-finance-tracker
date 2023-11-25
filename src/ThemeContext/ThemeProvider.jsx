@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ThemeContext from "./ThemeContext";
 
-
+// context to change the background theme-----------------------
 export default function ThemeProvider({children}){
 
     const [theme,setTheme] = useState(localStorage.getItem('theme') ?? 'light')

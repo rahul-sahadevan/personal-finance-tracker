@@ -9,6 +9,7 @@ function TransactionTable({transaction,addTransaction,fetchTransaction}){
     let [search,setSearch] = useState('');
     let[typeFilter,setTypeFilter] = useState('')
     let[sortKey,setSortKey] = useState('');
+    // creating column for setting up the antd column---------
     const columns = [
         {
           title: 'Name',

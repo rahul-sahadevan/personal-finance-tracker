@@ -2,14 +2,16 @@
 import React,{useEffect, useState} from "react";
 import Header from "../components/Header";
 import Cards from "../components/Cards";
-import { Modal } from "antd";
+
 import AddExpence from "../components/Modals/addExpence";
 import AddIncome from "../components/Modals/addIncome";
+
 import { toast } from "react-toastify";
+
 import { auth, db } from "../firebase";
 import { addDoc,collection,query,where,getDocs } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import moment from "moment/moment";
+
 import TransactionTable from "../components/TransactionTable";
 import Chart from "../components/Charts";
 import NoTransaction from "../components/NoTransactions";
@@ -26,6 +28,7 @@ function Dashboard(){
     const [expence,setExpence] = useState(0)
     const [totalBalance,setTotalBalance] = useState(0)
 
+    // functions to show and cancel the income and expense modals
     const showExpenseModal = ()=>{
         setisExpenseModalVisible(true)
         console.log('expense')
@@ -52,6 +55,7 @@ function Dashboard(){
         addTransaction(newTransaction)
     }
 
+    // functiion to add the table values into the firestore---------
     async function addTransaction(trans,many){
         try{
              
@@ -75,6 +79,8 @@ function Dashboard(){
         fetchTransaction()
 
     },[user])
+
+    // function to fetch the table data from the fire store ---------------------
     async function fetchTransaction(){
         setLoading(true)
         if(user){
@@ -95,6 +101,7 @@ function Dashboard(){
         calculateBalance()
     },[transaction])
     
+    // function to calculate the income,expense,and current balance of the user---------------
     function calculateBalance(){
         let incomeTotal = 0;
         let expenceTotal = 0;
@@ -116,6 +123,7 @@ function Dashboard(){
 
     }
 
+    // sorting the transaction array----------------
     let sortedTransaction = transaction.sort((a,b)=>{
         
         return new Date(a.date) - new Date(b.date)

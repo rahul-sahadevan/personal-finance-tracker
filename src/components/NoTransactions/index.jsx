@@ -1,6 +1,7 @@
 import { Flex } from "antd";
 import React from "react";
 
+// show no transaction is there is no expected transaction amount-----------
 function NoTransaction(){
 
     return (

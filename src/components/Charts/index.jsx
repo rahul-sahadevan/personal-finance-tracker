@@ -2,11 +2,14 @@ import React from 'react';
 import { Line, Pie } from '@ant-design/charts';
 import './style.css'
 
+// chart component -------------------------
 const Chart = ({sortedTransaction}) => {
+  // getting transaction date and amount 
   const data = sortedTransaction.map((item)=>{
     return {date:item.date,amount:item.amount}
   })
 
+  // getting the expense amount---------
   const spendingData = sortedTransaction.filter((item)=>{
     if(item.type === 'expense'){
       return {tag:item.tag,amount:item.amount}
@@ -15,6 +18,7 @@ const Chart = ({sortedTransaction}) => {
 
  let finalSpending = [{tag:'food',amount:0},{tag:'education',amount:0},{tag:'office',amount:0}]
 
+//  calculting the final spending -------------
  spendingData.forEach((item)=>{
   if(item.tag === 'food'){
     finalSpending[0].amount += item.amount
@@ -27,6 +31,7 @@ const Chart = ({sortedTransaction}) => {
   }
  })
 
+//  chart configuration
   const config = {
     data:data,
     width: 700,
@@ -44,7 +49,7 @@ const Chart = ({sortedTransaction}) => {
     },
   };
   
-
+// pie chart configuration----------
   const spendingconfig = {
     data: Object.values(finalSpending),
     width:300,

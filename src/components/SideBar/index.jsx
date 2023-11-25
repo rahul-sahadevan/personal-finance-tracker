@@ -1,11 +1,12 @@
 import React, { useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import {Menu,Grid,BarChart2, CreditCard, DollarSign, Moon, LogOut} from 'react-feather'
+import {Menu,Grid,BarChart2, CreditCard, DollarSign, Moon, LogOut, User} from 'react-feather'
 import './style.css'
-
+// firebase ----------
 import { auth } from "../../firebase";
 import {  signOut } from "firebase/auth";
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { toast } from "react-toastify";
 
 import ThemeContext from '../../ThemeContext/ThemeContext';
@@ -51,7 +52,7 @@ function SideBar(){
         navigate("/")
     }
 
-
+// function to change the background theme--------------
     const handleTogleChange = ()=>{
         if(toggle === true){
             changeTheme('dark')
@@ -61,6 +62,7 @@ function SideBar(){
         }
     }
 
+    // function for toggle moon button---------------
     function handleToggle(){
         setActice(true)
         if(toggle === true){
@@ -71,17 +73,6 @@ function SideBar(){
         }
     }
 
-    function handleMenu(){
-        if(active === 'active'){
-            setActice('hide-active')
-        }
-        else{
-            setActice('active')
-        }
-
-    }
-
- 
 
     useEffect(()=>{
         console.log("xxx")
@@ -119,7 +110,17 @@ function SideBar(){
                             <div className='hover-div'></div>
                         </div>
                         <div>
-                            <img src={user.photoURL}></img>
+                            {
+                                user.photoURL ? (
+                                    <img src={user.photoURL}></img>
+
+                                )
+                                :
+                                (
+                                    <User/>
+                                )
+                            }
+                        
                         </div>
                     </div>
     

@@ -9,9 +9,12 @@ const LandingPage = ()=>{
     const navigate = useNavigate();
     const [rotation,setRotation] = useState({x:0,y:0})
 
+    // function to navigate to the signin page-------------
     function handleLogin(){
         navigate("/signin")
     }
+
+    // function to handle the hero image rotation while hovering---------------
     const handleImageRotation = (e)=>{
         const container = e.currentTarget;
         const { clientX, clientY } = e;
@@ -22,20 +25,24 @@ const LandingPage = ()=>{
         setRotation({ x: rotationX, y: rotationY });
     }
 
+    // handleing the mouse leave condition --------------------------
     const handleMouseLeave = (e)=>{
         const container = e.currentTarget;
 
         setRotation({x:0,y:0})
     }
 
+
     return (
         <>
-            <div className="nav-bar">
-                <p className="logo" ><img className="logo-image" src='src\assets\fi-high-resolution-logo.png'></img>nancely.</p>
+        {/* nacvbar div-------------- */}
+            <div className="nav-bar landing-nav">
+                <p className="logo-image logo" >Financely.</p>
                 <div className="photo-logout"> 
-                    <p className="logo link" onClick={handleLogin}>Login/Signin</p>
+                    <p className="logo link" onClick={handleLogin}>Login/SignIn</p>
                 </div>
             </div>
+            {/* lading page for the hero section --------------------- */}
             <div className='landing-div'>
                 <div className='hero-section'>
                     <p className='landing-title'><span className='financely'>Financely</span> to made Mange all your Data register</p>  
@@ -56,7 +63,13 @@ const LandingPage = ()=>{
                     <br></br>
                   
 
-                    <div className='major-image' onMouseMove={handleImageRotation} onMouseLeave={handleMouseLeave} style={{transform:`rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`}}>
+                    <div 
+                        className='major-image' 
+                        onMouseMove={handleImageRotation} 
+                        onMouseLeave={handleMouseLeave} 
+                        style={{transform:`rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`}}
+                    >
+
                         <div className='first-image'>
                             <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bc141a89b7006a587f0ac8_App%20Image.jpg" alt="" class="app-photo"></img>
 
@@ -106,11 +119,12 @@ const LandingPage = ()=>{
 
                         </div>
                        <br></br>
-                        <p className='text-content'>Trusted by Top-tier product campanies</p>
+                        <p className='text-content texty'>Trusted by Top-tier product campanies</p>
 
                     </div>
 
                     <br></br>
+                    {/* ------------------------------- */}
                     <div className='wecan-help' >
                         <p className='text-content-2'>We can help you manage from top to bottom, all <br></br>the layers.</p>
                         <br></br>
@@ -118,6 +132,7 @@ const LandingPage = ()=>{
                         <p className='text-content'>With user-friendly interfaces and powerful analytics, you can gain valuable insights into your financial health, set achievable goals, and track your progress over time. Take control of your finances and embark on a journey towards financial stability with our secure and efficient financial tracker.</p>
                     </div>
                     <br></br>
+                    {/* ----------------------------------- */}
                     <div className='split-content'>
                         <div className='split-1'>
                             <div>
@@ -151,7 +166,7 @@ const LandingPage = ()=>{
                         </div>
                     </div>
                     {/* ------------------------------------- */}
-                    <div className='split-content'>
+                    <div className='split-content split-reverse'>
                         <div className='split-2'>
                             <img src="https://assets.website-files.com/62bc1260fe7b1f3d37a8ea01/62bc4bd6a0bf2350ffd1ef9f_Feature%20Image%2002.svg" loading="lazy" alt="" class="feature-image"></img>
                         </div>
@@ -248,46 +263,47 @@ const LandingPage = ()=>{
                     <div className='feature-div'>
                         
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Budgeting and Goal Setting:
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text'>Allow users to set monthly or yearly budgets for different expense categories (e.g., groceries, utilities, entertainment)</p>
+                            <div className='layer'></div>
                             
                         </Card>
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Financial Insights and Analytics
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text '>Provide users with visualizations and analytics of their spending patterns over time. Charts and graphs can help users better understand where their money is going.</p>
                         </Card>
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Data Export and Reports
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text'>Provide users with the ability to export their financial data in common formats (CSV, PDF). This can be useful for tax purposes or for creating custom reports.</p>
                         </Card>
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Data Storage Using Firebase
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text'>Securely store and access your financial data with confidence. Our app leverages Firebase for robust and reliable cloud storage, ensuring your information is safely managed and accessible across devices.</p>
                         </Card>
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Sort Data
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text'>Effortlessly organize your financial records with our intuitive sorting feature. Whether by date, category, or amount, our app empowers users to gain insights into their spending patterns and make informed financial decisions.</p>
                         </Card>
                         <Card className='my-card-2'>
-                            <h1>
+                            <h2>
                                 Visual Data Presentation
                                 <ArrowDownRight/>
-                            </h1>
+                            </h2>
                             <p className='text-content feature-text'>Visualize your financial journey with dynamic charts and graphs. Our app provides insightful graphical representations, transforming raw data into clear visualizations to help users track, analyze, and optimize their financial habits.</p>
                         </Card>                    
                     </div>
@@ -332,8 +348,7 @@ const LandingPage = ()=>{
                     {/* ----------------- */}
                     <div className='logo-email'>
                         <p className='logo-image logo'>
-                            <img src='src\assets\fi-high-resolution-logo.png' className='logo-image'></img>
-                            nancely
+                            Financely
                         </p>
                         <div>
                             <p className='text-content'>myCompany.welcome@gmail.com</p>

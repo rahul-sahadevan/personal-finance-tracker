@@ -5,7 +5,17 @@
   .hero-section{
     text-align: center;
   }
-  
+  .landing-nav{
+    background-color: #17171A;
+    padding: 20px;
+  }
+  .logo span{
+    padding: 20px;
+    background-color: var(--theme);
+    border-radius: 100%;
+    font-size: 18px;
+
+  }
   .landing-title{
     font-size: 71px;
     font-weight: 600;
@@ -228,7 +238,7 @@
   .my-card-2:hover .text-content{
     color: white;
   }
-  .my-card-2 h1{
+  .my-card-2 h2{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -331,6 +341,9 @@
         font-size:52px;
       
     }
+    .split-reverse{
+      flex-direction: column-reverse !important;
+    }
     .text-content-2{
       font-size:36px;
       padding:8px;
@@ -415,25 +428,28 @@
       padding:0px 0px;
     }
     .text-content{
-      font-size:16px;
-      text-align:center;
+      font-size:14px;
+      text-align:left;
       padding:5px 0px;
       margin:5px;
+     
 
     }
     .wecan-help{
       padding:10px;
-    }
-    .buy-btn{
-      flex-direction:column;
     }
     .text-content-2{
       font-size:28px;
       width:100%;
       padding:5px 0px;
       text-align:left;
-      /* border:solid red; */
       
+    }
+    .texty{
+      text-align: center;
+    }
+    .buy-btn{
+      align-items: flex-start;
     }
     .wecan-help{
    

@@ -17,10 +17,10 @@ function Header(){
         }
 
     },[user,loading])
-    // logout funtion-------------------
+   
     console.log(user)
     
-    // function to navigate to login or sign up page
+    // function to navigate to home page
     function handleHome(){
         navigate("/")
     }
@@ -29,7 +29,7 @@ function Header(){
    
     return (
         <div className="nav-bar">
-            <p className="logo" ><img className="logo-image" src='src\assets\fi-high-resolution-logo.png'></img>nancely.</p>
+            <p className="logo" >Financely.</p>
             {
                 user ?(
                     <div className="photo-logout">
